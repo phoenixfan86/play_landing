@@ -1,0 +1,48 @@
+.responsive {
+	padding: 60px 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.responseBlock {
+	width: 600px;
+	display: flex;
+	gap: 25px;
+}
+
+.responseInfo {
+	display: flex;
+	gap: 25px;
+	flex-direction: column;
+}
+
+.responseInfo h3 {
+	color: var(--primary-text);
+}
+
+.responseInfo p {
+	color: var(--secondary-text);
+}
+
+.responsiveBtn {
+	margin-top: 15px;
+	display: flex;
+}
+
+@media only screen and (max-width: 640px) {
+	.responseBlock {
+		flex-direction: column-reverse;
+		align-items: center;
+	}
+	.responseInfo {
+		align-items: center;
+	}
+}
+
+@media only screen and (max-width: 479px) {
+	.responseInfo {
+		text-align: center;
+		padding: 0 20px;
+	}
+}

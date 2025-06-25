@@ -1,0 +1,87 @@
+.opportunities {
+	padding: 60px 0;
+	display: flex;
+	gap: 80px;
+	flex-direction: column;
+	align-items: center;
+}
+
+.oppBlock {
+	display: flex;
+	gap: 30px;
+	align-items: center;
+	justify-content: center;
+}
+
+.items {
+	width: 180px;
+	display: flex;
+	gap: 15px;
+	flex-direction: column;
+	align-items: center;
+}
+
+.items h4 {
+	color: var(--primary-text);
+	margin-top: 10px;
+}
+
+.items p {
+	text-align: center;
+	color: var(--secondary-text);
+}
+
+.itemsBtn {
+	margin-top: 15px;
+}
+
+.messageBlock {
+	position: relative;
+	width: 600px;
+	display: flex;
+	gap: 12px;
+	flex-direction: column;
+	align-items: center;
+	padding: 40px;
+	background-color: var(--primary-text);
+}
+
+.messageBlock h3 {
+	color: var(--text-1);
+	margin-bottom: 8px;
+}
+
+.messageBlock p {
+	text-align: center;
+	color: var(--text-2);
+}
+
+.messageBlock span {
+	margin-bottom: 0;
+}
+
+.messageBlock::before {
+	content: '';
+	position: absolute;
+	bottom: -14px;
+	width: 30px;
+	height: 30px;
+	background-color: var(--primary-text);
+	transform: rotate(45deg);
+}
+
+@media only screen and (max-width: 640px) {
+	.oppBlock {
+		flex-direction: column;
+	}
+
+	.items {
+		width: 100%;
+	}
+}
+
+@media only screen and (max-width: 479px) {
+	.messageBlock {
+		width: 95%;
+	}
+}

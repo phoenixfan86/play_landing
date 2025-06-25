@@ -1,0 +1,32 @@
+.callToAction {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding-top: 50px;
+	padding-bottom: 70px;
+	background-color: var(--primary-text);
+}
+
+.callToBlock {
+	width: 600px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+}
+
+.callToBlock p {
+	text-align: center;
+}
+
+.callToBtn {
+	margin-top: 35px;
+}
+
+@media only screen and (max-width: 479px) {
+	.callToBlock {
+		width: 100%;
+	}
+}

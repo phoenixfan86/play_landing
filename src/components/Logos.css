@@ -1,0 +1,50 @@
+.logos {
+	padding-top: 60px;
+	padding-bottom: 30px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.logocBlock {
+	display: flex;
+	gap: 25px;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.logocBlock h3 {
+	color: var(--primary-text);
+}
+
+.logocBlock p {
+	color: var(--secondary-text);
+}
+
+.logosGallery {
+	display: flex;
+	gap: 30px;
+	margin-top: 25px;
+}
+
+@media only screen and (max-width: 640px) {
+	.logocBlock {
+		padding: 0 40px;
+	}
+
+	.logocBlock {
+		text-align: center;
+	}
+
+	.logosGallery {
+		flex-direction: column;
+	}
+}
+
+@media only screen and (max-width: 479px) {
+	.logocBlock {
+		padding: 0 10px;
+	}
+}

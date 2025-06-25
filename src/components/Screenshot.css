@@ -1,0 +1,82 @@
+.screenshot {
+	display: flex;
+	flex-direction: column;
+	gap: 120px;
+	align-items: center;
+	padding: 60px 0;
+}
+
+.galleryBlock {
+	display: flex;
+	gap: 45px;
+	flex-direction: column;
+}
+
+.galleryBlock h3 {
+	color: var(--primary-text);
+}
+
+.galleryItem {
+	display: flex;
+	gap: 25px;
+}
+
+.itemImg {
+	display: flex;
+	gap: 13px;
+	flex-direction: column;
+	align-items: center;
+	font-size: 15px;
+	font-weight: 700;
+	color: var(--primary-text);
+}
+
+.testBlock {
+	display: flex;
+	gap: 30px;
+	align-items: start;
+}
+
+.testDescr {
+	width: 275px;
+	display: flex;
+	gap: 25px;
+	flex-direction: column;
+}
+
+.testDescr p {
+	color: var(--secondary-text);
+}
+
+.testBtn {
+	display: flex;
+	margin-top: 15px;
+}
+
+@media only screen and (max-width: 640px) {
+	.galleryItem {
+		flex-direction: column;
+	}
+
+	.testBlock {
+		flex-direction: column;
+		align-items: start;
+	}
+
+	.testDescr {
+		width: 100%;
+		align-items: center;
+		padding: 0 40px;
+		text-align: center;
+	}
+}
+
+@media only screen and (max-width: 479px) {
+	.testBlock {
+		align-items: start;
+	}
+
+	.testDescr {
+		padding: 0 20px;
+	}
+}
