@@ -45,6 +45,89 @@ header {
 	margin-top: 35px;
 }
 
+.editable {
+	cursor: pointer;
+	transition: all 0.2s;
+}
+
+.editable {
+	box-sizing: border-box;
+	transition: outline 0.2s ease, box-shadow 0.2s ease;
+}
+
+.editable.selected {
+	outline: 2px dashed yellow;
+	outline-offset: 4px;
+	background-color: rgba(52, 152, 219, 0.05);
+}
+
+.editorSidebar {
+	position: fixed;
+	top: 0;
+	right: 0;
+	height: 100vh;
+	width: 300px;
+	display: flex;
+	gap: 20px;
+	flex-direction: column;
+	color: var(--text-2);
+	background: var(--primary-text);
+	border-left: 1px dashed yellow;
+	padding: 20px;
+	z-index: 1000;
+}
+
+.editorSidebar input {
+	margin-top: 5px;
+}
+
+.editorSidebar input,
+.editorSidebar textarea {
+	width: 100%;
+	font-size: 1rem;
+	padding: 8px;
+	color: var(--text-2);
+	background-color: transparent;
+	border: 1px solid var(--primary);
+	border-radius: 4px;
+}
+
+.editorSidebar textarea {
+	min-height: 150px;
+}
+
+.fontStyle {
+	margin-top: -15px;
+}
+
+.editorSidebar button {
+	padding: 8px 12px;
+	background-color: var(--primary);
+	border: none;
+	border-radius: 4px;
+	color: white;
+	cursor: pointer;
+}
+
+.editorlTitle {
+	text-align: right;
+}
+
+.editorlTitle h3 {
+	text-align: center;
+}
+
+.editorSidebar p {
+	margin-top: 10px;
+}
+
+.styleBtn {
+	font-weight: bold;
+	font-size: 16px;
+	transition: all 0.2s ease;
+	background-color: inherit !important;
+}
+
 @media only screen and (max-width: 640px) {
 	.nav {
 		padding: 30px 0;
