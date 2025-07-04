@@ -1,7 +1,13 @@
 import "./Header.css";
-import { useState, useEffect, useRef } from "react";
-import { IoMdClose } from "react-icons/io";
+import { useState, useRef } from "react";
 import type { NavItemsProps } from "../types/NavItemsProps";
+import { FaWindowClose } from "react-icons/fa";
+import { MdEditSquare } from "react-icons/md";
+import { FaGear } from "react-icons/fa6";
+import { PiMonitorFill } from "react-icons/pi";
+import { GrMonitor } from "react-icons/gr";
+import { TfiMobile } from "react-icons/tfi";
+import { FiTablet } from "react-icons/fi";
 
 type EditableTextKey = "heading" | "subtitle" | "paragraph";
 
@@ -9,6 +15,10 @@ const Header = () => {
   const [selected, setSelected] = useState<string | null>(null);
   const [editedText, setEditedText] = useState<string>("");
   const [backgroundColor, setBackgroundColor] = useState<string>("var(--primary-text)");
+  const [mode, setMode] = useState<'edit' | 'settings' | null>('edit');
+
+  const [showPreview, setShowPreview] = useState(false);
+  const [device, setDevice] = useState<'desktop' | 'tablet' | 'mobile'>('desktop');
 
   const [texts, setTexts] = useState({
     heading: "Promote your New App !",
@@ -61,6 +71,12 @@ const Header = () => {
     setSelected(null);
   }
 
+  const handlePreviewClose = () => {
+    setShowPreview(false);
+  }
+
+  const handleEditMode = () => setMode('edit');
+  const handleSettingsMode = () => setMode('settings');
 
   const navItems: NavItemsProps[] = [
     {
@@ -132,119 +148,186 @@ const Header = () => {
 
       {selected && (
         <div className="editorSidebar" ref={modalRef}>
-
-          <div className="editorlTitle">
-            <IoMdClose onClick={handleClose} />
-            <h3>Editable Component</h3>
+          <div className="editorIcon">
+            <MdEditSquare onClick={handleEditMode} className={`icons ${mode === 'edit' ? 'activeMode' : ''}`} />
+            <FaGear onClick={handleSettingsMode} className={`icons ${mode === 'settings' ? 'activeMode' : ''}`} />
+            <FaWindowClose onClick={handleClose} className="icons" />
           </div>
-          {selected === "paragraph" ? (
-            <textarea
-              value={editedText}
-              onChange={(e) => setEditedText(e.target.value)}
-            />
-          ) : selected === "background" ? (
-            <input
-              type="text"
-              placeholder="Set background"
-              value={editedText}
-              onChange={(e) => setEditedText(e.target.value)}
-            />
-          ) : (
-            <input
-              value={editedText}
-              onChange={(e) => setEditedText(e.target.value)}
-            />
-          )}
+          <div className="editorTitle">
+            <h3>{mode === 'edit' ? 'Editable Component' : 'Settings'}</h3>
+          </div>
 
-          {["heading", "subtitle", "paragraph"].includes(selected) && (
+          {mode === 'edit' ? (
             <>
-              <div className="fontStyle">
-                <button
-                  type="button"
-                  className={`styleBtn ${textStyles[selected as EditableTextKey].fontWeight === "bold" ? "active" : ""}`}
-                  onClick={() =>
-                    setTextStyles((prev) => ({
-                      ...prev,
-                      [selected as EditableTextKey]: {
-                        ...prev[selected as EditableTextKey],
-                        fontWeight:
-                          prev[selected as EditableTextKey].fontWeight === "bold"
-                            ? "normal"
-                            : "bold",
-                      },
-                    }))
-                  }
-                >
-                  B
-                </button>
-                <button
-                  type="button"
-                  className={`styleBtn ${textStyles[selected as EditableTextKey].fontStyle === "italic" ? "active" : ""}`}
-                  onClick={() =>
-                    setTextStyles((prev) => ({
-                      ...prev,
-                      [selected as EditableTextKey]: {
-                        ...prev[selected as EditableTextKey],
-                        fontStyle:
-                          prev[selected as EditableTextKey].fontStyle === "italic"
-                            ? "normal"
-                            : "italic",
-                      },
-                    }))
-                  }
-                >
-                  I
-                </button>
-              </div>
-              <label>
-                Font Size:
+              {/* === Edit mode === */}
+              {selected === 'paragraph' ? (
+                <textarea
+                  value={editedText}
+                  onChange={(e) => setEditedText(e.target.value)}
+                />
+              ) : selected === 'background' ? (
                 <input
                   type="text"
-                  value={textStyles[selected as EditableTextKey].fontSize}
-                  onChange={(e) =>
-                    setTextStyles((prev) => ({
-                      ...prev,
-                      [selected as EditableTextKey]: {
-                        ...prev[selected as EditableTextKey],
-                        fontSize: e.target.value,
-                      },
-                    }))
-                  }
+                  placeholder="Set background"
+                  value={editedText}
+                  onChange={(e) => setEditedText(e.target.value)}
                 />
-              </label>
-              <label>
-                Line height:
+              ) : (
                 <input
-                  type="text"
-                  value={textStyles[selected as EditableTextKey].lineHeight}
-                  onChange={(e) =>
-                    setTextStyles((prev) => ({
-                      ...prev,
-                      [selected as EditableTextKey]: {
-                        ...prev[selected as EditableTextKey],
-                        lineHeight: e.target.value,
-                      },
-                    }))
-                  }
+                  value={editedText}
+                  onChange={(e) => setEditedText(e.target.value)}
                 />
-              </label>
-              <label>
-                Color:
-                <input
-                  type="color"
-                  value={textStyles[selected as EditableTextKey].color}
-                  onChange={(e) =>
-                    setTextStyles((prev) => ({
-                      ...prev,
-                      [selected]: { ...prev[selected as EditableTextKey], color: e.target.value },
-                    }))
-                  }
-                />
-              </label>
+              )}
 
+              {["heading", "subtitle", "paragraph"].includes(selected) && (
+                <>
+                  <div className="fontStyle">
+                    <button
+                      type="button"
+                      className={`styleBtn ${textStyles[selected as EditableTextKey].fontWeight === 'bold'
+                        ? 'active'
+                        : ''
+                        }`}
+                      onClick={() =>
+                        setTextStyles((prev) => ({
+                          ...prev,
+                          [selected as EditableTextKey]: {
+                            ...prev[selected as EditableTextKey],
+                            fontWeight:
+                              prev[selected as EditableTextKey].fontWeight === 'bold'
+                                ? 'normal'
+                                : 'bold',
+                          },
+                        }))
+                      }
+                    >
+                      B
+                    </button>
+                    <button
+                      type="button"
+                      className={`styleBtn ${textStyles[selected as EditableTextKey].fontStyle === 'italic'
+                        ? 'active'
+                        : ''
+                        }`}
+                      onClick={() =>
+                        setTextStyles((prev) => ({
+                          ...prev,
+                          [selected as EditableTextKey]: {
+                            ...prev[selected as EditableTextKey],
+                            fontStyle:
+                              prev[selected as EditableTextKey].fontStyle === 'italic'
+                                ? 'normal'
+                                : 'italic',
+                          },
+                        }))
+                      }
+                    >
+                      I
+                    </button>
+                  </div>
+
+                  <label>
+                    Font Size:
+                    <input
+                      type="text"
+                      value={textStyles[selected as EditableTextKey].fontSize}
+                      onChange={(e) =>
+                        setTextStyles((prev) => ({
+                          ...prev,
+                          [selected as EditableTextKey]: {
+                            ...prev[selected as EditableTextKey],
+                            fontSize: e.target.value,
+                          },
+                        }))
+                      }
+                    />
+                  </label>
+
+                  <label>
+                    Line height:
+                    <input
+                      type="text"
+                      value={textStyles[selected as EditableTextKey].lineHeight}
+                      onChange={(e) =>
+                        setTextStyles((prev) => ({
+                          ...prev,
+                          [selected as EditableTextKey]: {
+                            ...prev[selected as EditableTextKey],
+                            lineHeight: e.target.value,
+                          },
+                        }))
+                      }
+                    />
+                  </label>
+
+                  <label>
+                    Color:
+                    <input
+                      type="color"
+                      value={textStyles[selected as EditableTextKey].color}
+                      onChange={(e) =>
+                        setTextStyles((prev) => ({
+                          ...prev,
+                          [selected]: {
+                            ...prev[selected as EditableTextKey],
+                            color: e.target.value,
+                          },
+                        }))
+                      }
+                    />
+                  </label>
+                </>
+              )}
+              {/* === Edit mode === */}
             </>
+          ) : (
+            <div className="settingWrapper">
+              <div className="settingIcons" onClick={() => setShowPreview(!showPreview)}>
+                <PiMonitorFill />
+                <span>Preview</span>
+              </div>
+
+              {showPreview && (
+                <div className="previewWrapper">
+                  <div className="closeBtn">
+                    <FaWindowClose onClick={handlePreviewClose} className="icons" />
+                  </div>
+                  <div className="deviceIcons">
+                    <div
+                      onClick={() => setDevice('desktop')}
+                      className={device === 'desktop' ? 'deviceIcon active' : ''}
+                    >
+                      <GrMonitor />
+                    </div>
+                    <div
+                      onClick={() => setDevice('tablet')}
+                      className={device === 'tablet' ? 'deviceIcon active' : ''}
+                    >
+                      <FiTablet />
+                    </div>
+                    <div
+                      onClick={() => setDevice('mobile')}
+                      className={device === 'mobile' ? 'deviceIcon active' : ''}
+                    >
+                      <TfiMobile />
+                    </div>
+                  </div>
+                  <div className="previewModal">
+
+                    <div className="previewFrame">
+                      <iframe
+                        src="/preview.html"
+                        title="Preview"
+                        className={`device-${device}`}
+                      />
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
           )}
-          <button onClick={handleSave}>Save</button>
+
+          <button onClick={handleSave} className={`${mode === 'settings' ? 'hidden' : ''}`}>Save</button>
         </div>
       )}
     </header>

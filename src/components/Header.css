@@ -48,9 +48,6 @@ header {
 .editable {
 	cursor: pointer;
 	transition: all 0.2s;
-}
-
-.editable {
 	box-sizing: border-box;
 	transition: outline 0.2s ease, box-shadow 0.2s ease;
 }
@@ -77,6 +74,37 @@ header {
 	z-index: 1000;
 }
 
+.editorIcon {
+	display: flex;
+	gap: 10px;
+	justify-content: end;
+	padding-bottom: 20px;
+	border-bottom: 1px solid var(--label-1);
+}
+
+.icons {
+	font-size: 22px;
+	cursor: pointer;
+	transition: all 0.4s ease;
+}
+
+.icons:hover {
+	transform: scale(0.93);
+	color: var(--primary);
+}
+
+.icons:nth-last-child(1):hover {
+	color: rgb(235, 77, 77);
+}
+
+.activeMode {
+	color: var(--primary);
+}
+
+.hidden {
+	display: none;
+}
+
 .editorSidebar input {
 	margin-top: 5px;
 }
@@ -84,7 +112,7 @@ header {
 .editorSidebar input,
 .editorSidebar textarea {
 	width: 100%;
-	font-size: 1rem;
+	font-size: 16px;
 	padding: 8px;
 	color: var(--text-2);
 	background-color: transparent;
@@ -109,11 +137,11 @@ header {
 	cursor: pointer;
 }
 
-.editorlTitle {
+.editorTitle {
 	text-align: right;
 }
 
-.editorlTitle h3 {
+.editorTitle h3 {
 	text-align: center;
 }
 
@@ -126,6 +154,99 @@ header {
 	font-size: 16px;
 	transition: all 0.2s ease;
 	background-color: inherit !important;
+}
+
+.settingIcons {
+	display: flex;
+	gap: 5px;
+	align-items: center;
+	font-size: 22px;
+}
+
+.settingIcons span {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.previewWrapper {
+	position: fixed;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(0, 0, 0, 0.5);
+	padding: 1rem;
+	border: 1px solid #ccc;
+	z-index: 100;
+}
+
+.closeBtn {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
+
+.previewModal {
+	z-index: 200;
+}
+
+.deviceIcons {
+	position: fixed;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	gap: 16px;
+	margin-bottom: 16px;
+	z-index: 300;
+}
+
+.deviceIcons div {
+	display: flex;
+	font-size: 22px;
+	padding: 10px;
+	background: var(--bg-3);
+	border: 1px solid #fff;
+	border-radius: 8px;
+	margin-top: 10px;
+}
+
+.deviceIcon.active {
+	background-color: var(--primary);
+	border-color: var(--primary);
+}
+
+.activeIcons {
+	background-color: var(--primary);
+}
+
+.previewFrame {
+	display: flex;
+	justify-content: center;
+	padding: 1rem;
+}
+
+.previewFrame iframe {
+	border: 1px solid #ddd;
+	width: 1200px;
+	height: 100vh;
+	margin-top: 150px;
+	border: none;
+	background-color: #fff;
+	overflow-y: hidden;
+	transition: width 0.3s ease;
+}
+
+iframe.device-desktop {
+	width: 1200px;
+}
+
+iframe.device-tablet {
+	width: 640px;
+}
+
+iframe.device-mobile {
+	width: 400px;
 }
 
 @media only screen and (max-width: 640px) {
