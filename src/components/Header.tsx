@@ -1,5 +1,5 @@
 import "./Header.css";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import type { NavItemsProps } from "../types/NavItemsProps";
 import { FaWindowClose } from "react-icons/fa";
 import { MdEditSquare } from "react-icons/md";
@@ -42,6 +42,43 @@ const Header = () => {
   });
 
   const modalRef = useRef<HTMLDivElement | null>(null);
+  const iframeRef = useRef<HTMLIFrameElement | null>(null);
+
+  const updateIframeContent = () => {
+    if (iframeRef.current && iframeRef.current.contentWindow) {
+      try {
+        const data = {
+          texts,
+          textStyles,
+          backgroundColor
+        };
+
+        iframeRef.current.contentWindow.postMessage(data, window.location.origin);
+      } catch (error) {
+        console.error('Помилка при оновленні iframe:', error);
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (showPreview) {
+
+      setTimeout(updateIframeContent, 100);
+    }
+  }, [texts, textStyles, backgroundColor, showPreview]);
+
+  useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      if (event.origin !== window.location.origin) return;
+
+      if (event.data.type === 'iframe-ready') {
+        updateIframeContent();
+      }
+    };
+
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
+  }, [texts, textStyles, backgroundColor]);
 
   const handleEditClick = (field: string) => {
     setSelected(field);
@@ -50,7 +87,6 @@ const Header = () => {
     } else {
       setEditedText(texts[field as keyof typeof texts]);
     }
-
   };
 
   const handleSave = () => {
@@ -137,7 +173,7 @@ const Header = () => {
           <p className="paragraph white" style={textStyles.paragraph} >{texts.paragraph}</p>
         </div>
 
-        <div className="promoteBtn" onClick={() => handleEditClick("headerBtn")}>
+        <div className={`editable promoteBtn ${selected === "headerBtn" ? "selected" : ""}`} onClick={() => handleEditClick("headerBtn")}>
           <a href="#">
             <span className="primaryBtn">{texts.headerBtn}</span>
           </a>
@@ -313,12 +349,13 @@ const Header = () => {
                     </div>
                   </div>
                   <div className="previewModal">
-
                     <div className="previewFrame">
                       <iframe
+                        ref={iframeRef}
                         src="/preview.html"
                         title="Preview"
                         className={`device-${device}`}
+                        onLoad={updateIframeContent}
                       />
                     </div>
                   </div>

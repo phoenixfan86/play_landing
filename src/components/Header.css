@@ -59,7 +59,7 @@ header {
 }
 
 .editorSidebar {
-	position: fixed;
+	position: absolute;
 	top: 0;
 	right: 0;
 	height: 100vh;
@@ -70,6 +70,7 @@ header {
 	color: var(--text-2);
 	background: var(--primary-text);
 	border-left: 1px dashed yellow;
+	border-bottom: 1px dashed yellow;
 	padding: 20px;
 	z-index: 1000;
 }

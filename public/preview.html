@@ -1,0 +1,1951 @@
+<html lang="en">
+	<head>
+		<script type="module">
+			import { injectIntoGlobalHook } from '/@react-refresh'
+			injectIntoGlobalHook(window)
+			window.$RefreshReg$ = () => {}
+			window.$RefreshSig$ = () => type => type
+		</script>
+
+		<script type="module" src="/@vite/client"></script>
+
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Play</title>
+		<style
+			type="text/css"
+			data-vite-dev-id="C:/project/fiver/04/play/src/colors.css"
+		>
+			:root {
+				--bg-1: #2e2836;
+				--bg-2: #332c3e;
+				--bg-3: #382f46;
+				--bg-4: #3f3352;
+				--bg-5: #f9f9f9;
+				--bg-6: #37323d;
+				--primary: #3d9f96;
+				--primary-text: #27242b;
+				--secondary-text: #ababab;
+				--text-1: #eaeaea;
+				--text-2: #d5d5d5;
+				--label-1: #7e7e7e;
+				--border-1: #322f36;
+			}
+		</style>
+		<style
+			type="text/css"
+			data-vite-dev-id="C:/project/fiver/04/play/src/index.css"
+		>
+			@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				text-decoration: none;
+				list-style: none;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+			}
+
+			body {
+				font-family: Helvetica, Arial, 'Raleway', sans-serif;
+			}
+
+			div,
+			p,
+			a,
+			li,
+			td {
+				-webkit-text-size-adjust: none;
+			}
+
+			p {
+				font-size: 14px;
+				line-height: 24px;
+				font-weight: 300;
+			}
+
+			.bg-0 {
+				background-color: var(--primary-text);
+			}
+
+			.bg-1 {
+				background-color: var(--bg-1);
+			}
+
+			.bg-2 {
+				background-color: var(--bg-2);
+			}
+
+			.bg-3 {
+				background-color: var(--bg-3);
+			}
+
+			.bg-4 {
+				background-color: var(--bg-4);
+			}
+
+			.paragraph {
+				width: 600px;
+				padding: 0 45px;
+			}
+
+			.paragraph-2 {
+				font-size: 18px;
+				line-height: 28px;
+				text-align: center;
+			}
+
+			h2 {
+				font-size: 32px;
+				line-height: 40px;
+				font-weight: 700;
+			}
+
+			h3 {
+				font-size: 24px;
+				line-height: 30px;
+				font-weight: 700;
+			}
+
+			.h3 {
+				font-size: 28px;
+				font-weight: 700;
+				line-height: 34px;
+			}
+
+			.light {
+				font-weight: 300;
+			}
+
+			.white {
+				color: #fff;
+			}
+
+			.primary {
+				color: var(--primary);
+			}
+
+			.subtitle {
+				font-size: 15px;
+				font-weight: 600;
+				line-height: 40px;
+				vertical-align: top;
+				text-transform: uppercase;
+				margin-top: 7px;
+				margin-bottom: 15px;
+				color: var(--primary);
+			}
+
+			.subtitle-2 {
+				font-size: 18px;
+				font-weight: 600;
+				line-height: 24px;
+				vertical-align: top;
+				text-transform: uppercase;
+				color: var(--primary);
+			}
+
+			.label-1 {
+				font-size: 22px;
+				line-height: 28px;
+				font-weight: 700;
+				color: var(--text-1);
+			}
+
+			.hover:hover {
+				opacity: 0.85;
+				filter: alpha(opacity=85);
+			}
+
+			.primaryBtn {
+				height: 46px;
+				display: flex;
+				align-items: center;
+				font-size: 13px;
+				font-weight: 600;
+				line-height: 20px;
+				color: #fff;
+				padding: 0 50px;
+				border: none;
+				border-radius: 50px;
+				background-color: var(--primary);
+			}
+		</style>
+		<style
+			type="text/css"
+			data-vite-dev-id="C:/project/fiver/04/play/src/components/Advantages.css"
+		>
+			.advantage {
+				position: relative;
+				display: flex;
+				flex-wrap: wrap;
+				padding: 0 100px;
+				background-image: url('./images/seperator2.jpg');
+			}
+
+			.advantage::after {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 50%;
+				width: 2px;
+				height: 100%;
+				background-color: var(--border-1);
+			}
+
+			.advantage::before {
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 0;
+				width: 100%;
+				height: 2px;
+				background-color: var(--border-1);
+			}
+
+			.advanWrapper {
+				width: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+
+			.advanItem {
+				width: 400px;
+				display: flex;
+				gap: 15px;
+				flex-direction: column;
+				padding: 50px;
+			}
+
+			.advanItem p {
+				color: var(--text-2);
+			}
+
+			.advanItem .subtitle {
+				margin: 0;
+			}
+
+			.advanTitle {
+				display: flex;
+				gap: 15px;
+				align-items: center;
+			}
+
+			@media only screen and (max-width: 640px) {
+				.advantage {
+					flex-direction: column;
+					padding: 0;
+				}
+
+				.advantage::after {
+					background-color: transparent;
+				}
+
+				.advantage::before {
+					background-color: transparent;
+				}
+
+				.advanWrapper {
+					width: 100%;
+					border-bottom: 2px solid var(--border-1);
+				}
+
+				.advanItem {
+					width: 100%;
+					align-items: center;
+					padding: 50px 0;
+				}
+			}
+
+			@media only screen and (max-width: 479px) {
+				.advanItem {
+					text-align: center;
+					padding: 50px 10px;
+				}
+			}
+		</style>
+		<style
+			type="text/css"
+			data-vite-dev-id="C:/project/fiver/04/play/src/components/CallToAction.css"
+		>
+			.callToAction {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				padding-top: 50px;
+				padding-bottom: 70px;
+				background-color: var(--primary-text);
+			}
+
+			.callToBlock {
+				width: 600px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				color: #fff;
+			}
+
+			.callToBlock p {
+				text-align: center;
+			}
+
+			.callToBtn {
+				margin-top: 35px;
+			}
+
+			@media only screen and (max-width: 479px) {
+				.callToBlock {
+					width: 100%;
+				}
+			}
+		</style>
+		<style
+			type="text/css"
+			data-vite-dev-id="C:/project/fiver/04/play/src/components/Features.css"
+		>
+			.features {
+				width: 100%;
+				display: flex;
+				flex-wrap: wrap;
+			}
+
+			.featureItem {
+				width: 25%;
+				display: flex;
+				gap: 10px;
+				flex-direction: column;
+				align-items: center;
+				padding: 25px 10px 30px 10px;
+			}
+
+			.featureItem p {
+				color: var(--secondary-text);
+			}
+
+			@media only screen and (max-width: 640px) {
+				.featureItem {
+					text-align: center;
+				}
+
+				.featureItem span {
+					font-size: 16px;
+					text-transform: none;
+				}
+			}
+
+			@media only screen and (max-width: 479px) {
+				.featureItem {
+					width: 50%;
+					padding: 25px 15px 30px 15px;
+				}
+			}
+		</style>
+		<style
+			type="text/css"
+			data-vite-dev-id="C:/project/fiver/04/play/src/components/Footer.css"
+		>
+			footer {
+				width: 100%;
+				display: flex;
+				gap: 60px;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				padding-top: 60px;
+				padding-bottom: 20px;
+			}
+
+			footer a,
+			p {
+				color: var(--secondary-text);
+			}
+
+			.footerBlock {
+				display: flex;
+				gap: 50px;
+				align-items: start;
+				justify-content: center;
+			}
+
+			.footerInfo {
+				width: 250px;
+			}
+
+			.footerBody {
+				display: flex;
+				gap: 50px;
+			}
+
+			.footerMenu span,
+			.contact span {
+				font-size: 16px;
+				line-height: 26px;
+				font-weight: 700;
+				text-transform: uppercase;
+				color: var(--primary-text);
+			}
+
+			.footerMenuItem {
+				display: flex;
+				flex-direction: column;
+				gap: 10px;
+				font-size: 13px;
+				margin-top: 15px;
+			}
+
+			.contact {
+				width: 150px;
+				display: flex;
+				flex-direction: column;
+				gap: 15px;
+			}
+
+			.copyright {
+				width: 600px;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+			}
+
+			.footerIcon {
+				display: flex;
+				gap: 20px;
+			}
+
+			@media only screen and (max-width: 640px) {
+				.footerBlock {
+					flex-direction: column;
+				}
+
+				.footerInfo {
+					width: 600px;
+				}
+				.footerBody {
+					width: 100%;
+					justify-content: space-around;
+				}
+				.contact {
+					width: 250px;
+				}
+			}
+
+			@media only screen and (max-width: 479px) {
+				.footerInfo {
+					width: 100%;
+					padding: 0 10px;
+					text-align: center;
+				}
+
+				.footerLogo {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+				}
+
+				.footerBody {
+					flex-direction: column;
+					align-items: center;
+					text-align: center;
+				}
+
+				.contact {
+					width: 150px;
+				}
+
+				.copyright {
+					width: 100%;
+					gap: 20px;
+					flex-direction: column;
+				}
+			}
+		</style>
+		<style
+			type="text/css"
+			data-vite-dev-id="C:/project/fiver/04/play/src/components/Header.css"
+		>
+			header {
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				background-color: var(--primary-text);
+			}
+
+			.nav {
+				width: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: space-around;
+				padding-top: 25px;
+				padding-bottom: 20px;
+				border-bottom: 1px solid #322f36;
+			}
+
+			.navMenu {
+				display: flex;
+				gap: 40px;
+			}
+
+			.navLink {
+				font-size: 12px;
+				font-weight: 700;
+				line-height: 24px;
+			}
+
+			.promote {
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				padding: 50px 20px 70px 20px;
+			}
+
+			.promote p {
+				text-align: center;
+			}
+
+			.promoteBtn {
+				margin-top: 35px;
+			}
+
+			.editable {
+				cursor: pointer;
+				transition: all 0.2s;
+				box-sizing: border-box;
+				transition: outline 0.2s ease, box-shadow 0.2s ease;
+			}
+
+			.editable.selected {
+				outline: 2px dashed yellow;
+				outline-offset: 4px;
+				background-color: rgba(52, 152, 219, 0.05);
+			}
+
+			.editorSidebar {
+				position: absolute;
+				top: 0;
+				right: 0;
+				height: 100vh;
+				width: 300px;
+				display: flex;
+				gap: 20px;
+				flex-direction: column;
+				color: var(--text-2);
+				background: var(--primary-text);
+				border-left: 1px dashed yellow;
+				border-bottom: 1px dashed yellow;
+				padding: 20px;
+				z-index: 1000;
+			}
+
+			.editorIcon {
+				display: flex;
+				gap: 10px;
+				justify-content: end;
+				padding-bottom: 20px;
+				border-bottom: 1px solid var(--label-1);
+			}
+
+			.icons {
+				font-size: 22px;
+				cursor: pointer;
+				transition: all 0.4s ease;
+			}
+
+			.icons:hover {
+				transform: scale(0.93);
+				color: var(--primary);
+			}
+
+			.icons:nth-last-child(1):hover {
+				color: rgb(235, 77, 77);
+			}
+
+			.activeMode {
+				color: var(--primary);
+			}
+
+			.hidden {
+				display: none;
+			}
+
+			.editorSidebar input {
+				margin-top: 5px;
+			}
+
+			.editorSidebar input,
+			.editorSidebar textarea {
+				width: 100%;
+				font-size: 16px;
+				padding: 8px;
+				color: var(--text-2);
+				background-color: transparent;
+				border: 1px solid var(--primary);
+				border-radius: 4px;
+			}
+
+			.editorSidebar textarea {
+				min-height: 150px;
+			}
+
+			.fontStyle {
+				margin-top: -15px;
+			}
+
+			.editorSidebar button {
+				padding: 8px 12px;
+				background-color: var(--primary);
+				border: none;
+				border-radius: 4px;
+				color: white;
+				cursor: pointer;
+			}
+
+			.editorTitle {
+				text-align: right;
+			}
+
+			.editorTitle h3 {
+				text-align: center;
+			}
+
+			.editorSidebar p {
+				margin-top: 10px;
+			}
+
+			.styleBtn {
+				font-weight: bold;
+				font-size: 16px;
+				transition: all 0.2s ease;
+				background-color: inherit !important;
+			}
+
+			.settingIcons {
+				display: flex;
+				gap: 5px;
+				align-items: center;
+				font-size: 22px;
+			}
+
+			.settingIcons span {
+				font-size: 16px;
+				font-weight: bold;
+			}
+
+			.previewWrapper {
+				position: fixed;
+				inset: 0;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background: rgba(0, 0, 0, 0.5);
+				padding: 1rem;
+				border: 1px solid #ccc;
+				z-index: 100;
+			}
+
+			.closeBtn {
+				position: absolute;
+				top: 20px;
+				right: 20px;
+			}
+
+			.previewModal {
+				z-index: 200;
+			}
+
+			.deviceIcons {
+				position: fixed;
+				top: 0;
+				left: 50%;
+				transform: translateX(-50%);
+				display: flex;
+				gap: 16px;
+				margin-bottom: 16px;
+				z-index: 300;
+			}
+
+			.deviceIcons div {
+				display: flex;
+				font-size: 22px;
+				padding: 10px;
+				background: var(--bg-3);
+				border: 1px solid #fff;
+				border-radius: 8px;
+				margin-top: 10px;
+			}
+
+			.deviceIcon.active {
+				background-color: var(--primary);
+				border-color: var(--primary);
+			}
+
+			.activeIcons {
+				background-color: var(--primary);
+			}
+
+			.previewFrame {
+				display: flex;
+				justify-content: center;
+				padding: 1rem;
+			}
+
+			.previewFrame iframe {
+				border: 1px solid #ddd;
+				width: 1200px;
+				height: 100vh;
+				margin-top: 150px;
+				border: none;
+				background-color: #fff;
+				overflow-y: hidden;
+				transition: width 0.3s ease;
+			}
+
+			iframe.device-desktop {
+				width: 1200px;
+			}
+
+			iframe.device-tablet {
+				width: 640px;
+			}
+
+			iframe.device-mobile {
+				width: 400px;
+			}
+
+			@media only screen and (max-width: 640px) {
+				.nav {
+					padding: 30px 0;
+					gap: 30px;
+					flex-direction: column;
+				}
+
+				.none {
+					display: none;
+				}
+			}
+
+			@media only screen and (max-width: 479px) {
+				.promote {
+					padding-right: 10px;
+					padding-left: 10px;
+				}
+
+				.paragraph {
+					padding: 0 5px;
+				}
+
+				header img {
+					width: 100%;
+				}
+			}
+		</style>
+		<style
+			type="text/css"
+			data-vite-dev-id="C:/project/fiver/04/play/src/components/Logos.css"
+		>
+			.logos {
+				padding-top: 60px;
+				padding-bottom: 30px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+			}
+
+			.logocBlock {
+				display: flex;
+				gap: 25px;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+			}
+
+			.logocBlock h3 {
+				color: var(--primary-text);
+			}
+
+			.logocBlock p {
+				color: var(--secondary-text);
+			}
+
+			.logosGallery {
+				display: flex;
+				gap: 30px;
+				margin-top: 25px;
+			}
+
+			@media only screen and (max-width: 640px) {
+				.logocBlock {
+					padding: 0 40px;
+				}
+
+				.logocBlock {
+					text-align: center;
+				}
+
+				.logosGallery {
+					flex-direction: column;
+				}
+			}
+
+			@media only screen and (max-width: 479px) {
+				.logocBlock {
+					padding: 0 10px;
+				}
+			}
+		</style>
+		<style
+			type="text/css"
+			data-vite-dev-id="C:/project/fiver/04/play/src/components/NewApp.css"
+		>
+			.newApp {
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				padding-top: 40px;
+				padding-bottom: 60px;
+				background-color: var(--bg-5);
+			}
+
+			.newAppHeader {
+				display: flex;
+				gap: 6px;
+				flex-direction: column;
+				align-items: center;
+				margin-bottom: 40px;
+			}
+
+			.socialIcons {
+				display: flex;
+				gap: 28px;
+				align-items: center;
+				justify-content: center;
+			}
+
+			.socialIcon {
+				width: 41px;
+			}
+
+			.description {
+				width: 600px;
+				display: flex;
+				gap: 25px;
+				flex-direction: column;
+				align-items: center;
+				padding-top: 60px;
+				padding-bottom: 20px;
+			}
+
+			.description p {
+				font-weight: 400;
+				color: var(--secondary-text);
+			}
+
+			.appSpecs {
+				width: 100%;
+				display: flex;
+				align-items: end;
+				justify-content: center;
+				margin-top: 30px;
+			}
+
+			.specBlock {
+				width: 189px;
+				display: flex;
+				align-items: center;
+				gap: 30px;
+				flex-direction: column;
+			}
+
+			.specItemL,
+			.specItemR {
+				display: flex;
+				gap: 15px;
+				flex-direction: column;
+			}
+
+			.specItemL,
+			.specItemR {
+				color: var(--secondary-text);
+			}
+
+			.specItemR p {
+				text-align: right;
+			}
+
+			.specTitleL,
+			.specTitleR {
+				display: flex;
+				gap: 10px;
+				align-items: center;
+			}
+
+			.specTitleR {
+				flex-direction: row-reverse;
+			}
+
+			.specLink {
+				font-size: 18px;
+				font-weight: 600;
+				line-height: 24px;
+				color: var(--primary-text);
+			}
+
+			@media only screen and (max-width: 640px) {
+				.appSpecs {
+					flex-direction: column;
+					align-items: center;
+				}
+
+				.description {
+					width: 100%;
+					padding-top: 30px;
+				}
+
+				.paragraph {
+					width: 100%;
+					text-align: center;
+					margin-bottom: 30px;
+				}
+
+				.specBlock {
+					width: 100%;
+				}
+
+				.specBlock:nth-child(2) {
+					margin: 20px 0;
+				}
+
+				.specItemL,
+				.specItemR {
+					align-items: center;
+				}
+
+				.specTitleR {
+					flex-direction: row;
+				}
+			}
+
+			@media only screen and (max-width: 479px) {
+				.newAppHeader {
+					padding: 0 25px;
+				}
+
+				.socialIcons {
+					width: 100%;
+					flex-wrap: wrap;
+				}
+
+				.description {
+					padding: 0 10px;
+				}
+			}
+		</style>
+		<style
+			type="text/css"
+			data-vite-dev-id="C:/project/fiver/04/play/src/components/Opportunities.css"
+		>
+			.opportunities {
+				padding: 60px 0;
+				display: flex;
+				gap: 80px;
+				flex-direction: column;
+				align-items: center;
+			}
+
+			.oppBlock {
+				display: flex;
+				gap: 30px;
+				align-items: center;
+				justify-content: center;
+			}
+
+			.items {
+				width: 180px;
+				display: flex;
+				gap: 15px;
+				flex-direction: column;
+				align-items: center;
+			}
+
+			.items h4 {
+				color: var(--primary-text);
+				margin-top: 10px;
+			}
+
+			.items p {
+				text-align: center;
+				color: var(--secondary-text);
+			}
+
+			.itemsBtn {
+				margin-top: 15px;
+			}
+
+			.messageBlock {
+				position: relative;
+				width: 600px;
+				display: flex;
+				gap: 12px;
+				flex-direction: column;
+				align-items: center;
+				padding: 40px;
+				background-color: var(--primary-text);
+			}
+
+			.messageBlock h3 {
+				color: var(--text-1);
+				margin-bottom: 8px;
+			}
+
+			.messageBlock p {
+				text-align: center;
+				color: var(--text-2);
+			}
+
+			.messageBlock span {
+				margin-bottom: 0;
+			}
+
+			.messageBlock::before {
+				content: '';
+				position: absolute;
+				bottom: -14px;
+				width: 30px;
+				height: 30px;
+				background-color: var(--primary-text);
+				transform: rotate(45deg);
+			}
+
+			@media only screen and (max-width: 640px) {
+				.oppBlock {
+					flex-direction: column;
+				}
+
+				.items {
+					width: 100%;
+				}
+			}
+
+			@media only screen and (max-width: 479px) {
+				.messageBlock {
+					width: 95%;
+				}
+			}
+		</style>
+		<style
+			type="text/css"
+			data-vite-dev-id="C:/project/fiver/04/play/src/components/Quote.css"
+		>
+			.quote {
+				width: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 60px 0;
+				background-image: url('./images/seperator1.jpg');
+				background-size: cover;
+			}
+
+			.quoteDesc {
+				width: 480px;
+				display: flex;
+				gap: 18px;
+				flex-direction: column;
+				align-items: center;
+			}
+
+			.quoteDesc img {
+				margin-bottom: 7px;
+			}
+
+			@media only screen and (max-width: 479px) {
+				.quoteDesc {
+					padding: 0 10px;
+				}
+			}
+		</style>
+		<style
+			type="text/css"
+			data-vite-dev-id="C:/project/fiver/04/play/src/components/Responsive.css"
+		>
+			.responsive {
+				padding: 60px 0;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+
+			.responseBlock {
+				width: 600px;
+				display: flex;
+				gap: 25px;
+			}
+
+			.responseInfo {
+				display: flex;
+				gap: 25px;
+				flex-direction: column;
+			}
+
+			.responseInfo h3 {
+				color: var(--primary-text);
+			}
+
+			.responseInfo p {
+				color: var(--secondary-text);
+			}
+
+			.responsiveBtn {
+				margin-top: 15px;
+				display: flex;
+			}
+
+			@media only screen and (max-width: 640px) {
+				.responseBlock {
+					flex-direction: column-reverse;
+					align-items: center;
+				}
+				.responseInfo {
+					align-items: center;
+				}
+			}
+
+			@media only screen and (max-width: 479px) {
+				.responseInfo {
+					text-align: center;
+					padding: 0 20px;
+				}
+			}
+		</style>
+		<style
+			type="text/css"
+			data-vite-dev-id="C:/project/fiver/04/play/src/components/Screenshot.css"
+		>
+			.screenshot {
+				display: flex;
+				flex-direction: column;
+				gap: 120px;
+				align-items: center;
+				padding: 60px 0;
+			}
+
+			.galleryBlock {
+				display: flex;
+				gap: 45px;
+				flex-direction: column;
+			}
+
+			.galleryBlock h3 {
+				color: var(--primary-text);
+			}
+
+			.galleryItem {
+				display: flex;
+				gap: 25px;
+			}
+
+			.itemImg {
+				display: flex;
+				gap: 13px;
+				flex-direction: column;
+				align-items: center;
+				font-size: 15px;
+				font-weight: 700;
+				color: var(--primary-text);
+			}
+
+			.testBlock {
+				display: flex;
+				gap: 30px;
+				align-items: start;
+			}
+
+			.testDescr {
+				width: 275px;
+				display: flex;
+				gap: 25px;
+				flex-direction: column;
+			}
+
+			.testDescr p {
+				color: var(--secondary-text);
+			}
+
+			.testBtn {
+				display: flex;
+				margin-top: 15px;
+			}
+
+			@media only screen and (max-width: 640px) {
+				.galleryItem {
+					flex-direction: column;
+				}
+
+				.testBlock {
+					flex-direction: column;
+					align-items: start;
+				}
+
+				.testDescr {
+					width: 100%;
+					align-items: center;
+					padding: 0 40px;
+					text-align: center;
+				}
+			}
+
+			@media only screen and (max-width: 479px) {
+				.testBlock {
+					align-items: start;
+				}
+
+				.testDescr {
+					padding: 0 20px;
+				}
+			}
+		</style>
+		<style
+			type="text/css"
+			data-vite-dev-id="C:/project/fiver/04/play/src/components/WeDid.css"
+		>
+			.weDid {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding-top: 40px;
+				padding-bottom: 30px;
+				background-color: var(--primary-text);
+			}
+
+			.weDidBlock {
+				width: 600px;
+				display: flex;
+				gap: 24px;
+				align-items: center;
+				justify-content: center;
+			}
+
+			.weDidItem {
+				display: flex;
+				gap: 10px;
+				flex-direction: column;
+				align-items: center;
+			}
+
+			.weDidItem .subtitle {
+				margin-top: 0;
+			}
+
+			.count {
+				font-size: 24px;
+				line-height: 30px;
+				font-weight: 700;
+				color: #fff;
+			}
+
+			@media only screen and (max-width: 640px) {
+				.weDidBlock {
+					flex-direction: column;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="root">
+			<header style="background-color: var(--primary-text)" id="preview-header">
+				<nav class="nav">
+					<ul class="navMenu">
+						<li><a href="#" class="navLink white">Home</a></li>
+						<li><a href="#" class="navLink white">Features</a></li>
+					</ul>
+					<div class="logo">
+						<a href="#"
+							><img alt="Logo" class="hover" src="./images/logo.png"
+						/></a>
+					</div>
+					<div class="none">
+						<a href="#" class="navLink primary">Get it Now</a>
+					</div>
+				</nav>
+				<div class="promote">
+					<div class="editable">
+						<h2
+							id="preview-heading"
+							class="white"
+							style="
+								color: rgb(255, 255, 255);
+								font-size: 32px;
+								line-height: 40px;
+								font-weight: 700;
+								font-style: normal;
+							"
+						>
+							<span class="light">Promote your</span> New App !
+						</h2>
+					</div>
+					<div class="editable">
+						<span
+							id="preview-subtitle"
+							class="subtitle"
+							style="
+								color: var(--primary);
+								font-size: 15px;
+								line-height: 40px;
+								font-weight: 600;
+								font-style: normal;
+							"
+							>new software in the app store</span
+						>
+					</div>
+					<div class="editable">
+						<p
+							id="preview-paragraph"
+							class="paragraph white"
+							style="
+								color: rgb(238, 238, 238);
+								font-size: 16px;
+								line-height: 24px;
+								font-weight: normal;
+								font-style: normal;
+							"
+						>
+							Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
+							auctor. Vestibulum id ligula porta felis euismod semper.
+						</p>
+					</div>
+					<div class="editable promoteBtn">
+						<a href="#" class="primaryBtn" id="preview-button">Buy Now</a>
+					</div>
+				</div>
+				<img
+					id="preview-image"
+					alt="PromoteImg"
+					class="promoteImg"
+					src="./images/image_600px_1.png"
+				/>
+			</header>
+			<main>
+				<section class="newApp">
+					<div class="newAppHeader">
+						<div class="socialIcons">
+							<div class="socialIcon">
+								<a href="#"
+									><img
+										alt="socialIcon"
+										class="hover"
+										src="./images/icons/social_icon1.png"
+								/></a>
+							</div>
+							<div class="socialIcon">
+								<a href="#"
+									><img
+										alt="socialIcon"
+										class="hover"
+										src="./images/icons/social_icon2.png"
+								/></a>
+							</div>
+							<div class="socialIcon">
+								<a href="#"
+									><img
+										alt="socialIcon"
+										class="hover"
+										src="./images/icons/social_icon3.png"
+								/></a>
+							</div>
+							<div class="socialIcon">
+								<a href="#"
+									><img
+										alt="socialIcon"
+										class="hover"
+										src="./images/icons/social_icon4.png"
+								/></a>
+							</div>
+							<div class="socialIcon">
+								<a href="#"
+									><img
+										alt="socialIcon"
+										class="hover"
+										src="./images/icons/social_icon5.png"
+								/></a>
+							</div>
+							<div class="socialIcon">
+								<a href="#"
+									><img
+										alt="socialIcon"
+										class="hover"
+										src="./images/icons/social_icon6.png"
+								/></a>
+							</div>
+							<div class="socialIcon">
+								<a href="#"
+									><img
+										alt="socialIcon"
+										class="hover"
+										src="./images/icons/social_icon7.png"
+								/></a>
+							</div>
+							<div class="socialIcon">
+								<a href="#"
+									><img
+										alt="socialIcon"
+										class="hover"
+										src="./images/icons/social_icon8.png"
+								/></a>
+							</div>
+						</div>
+						<span class="subtitle">Social Media option</span>
+					</div>
+					<div class="description">
+						<h3><span class="light">Check Our</span> New App .</h3>
+						<p class="paragraph">
+							Aenean lacinia bibendum nulla sed consectetur. Donec sed odio dui.
+							Lorem ipsum dolor sit amet, consectetur adipiscing
+						</p>
+					</div>
+					<div class="appSpecs">
+						<div class="specBlock">
+							<div class="specItemL">
+								<div class="specTitleL">
+									<img alt="icon28" src="./images/icons/icon_28px_1.png" /><a
+										href="#"
+										class="specLink"
+										>Awesomeness</a
+									>
+								</div>
+								<p>Aenean lacinia bibendum nulla sed consectetur.</p>
+							</div>
+							<div class="specItemL">
+								<div class="specTitleL">
+									<img alt="icon28" src="./images/icons/icon_28px_2.png" /><a
+										href="#"
+										class="specLink"
+										>Pro Concept</a
+									>
+								</div>
+								<p>Aenean lacinia bibendum nulla sed consectetur.</p>
+							</div>
+							<div class="specItemL">
+								<div class="specTitleL">
+									<img alt="icon28" src="./images/icons/icon_28px_3.png" /><a
+										href="#"
+										class="specLink"
+										>Colourfull</a
+									>
+								</div>
+								<p>Aenean lacinia bibendum nulla sed consectetur.</p>
+							</div>
+						</div>
+						<div class="specBlock">
+							<img alt="" src="./images/image_190px_1.png" />
+						</div>
+						<div class="specBlock">
+							<div class="specItemR">
+								<div class="specTitleR">
+									<img alt="icon28" src="./images/icons/icon_28px_4.png" /><a
+										href="#"
+										class="specLink"
+										>Skills</a
+									>
+								</div>
+								<p>Aenean lacinia bibendum nulla sed consectetur.</p>
+							</div>
+							<div class="specItemR">
+								<div class="specTitleR">
+									<img alt="icon28" src="./images/icons/icon_28px_5.png" /><a
+										href="#"
+										class="specLink"
+										>Responsive</a
+									>
+								</div>
+								<p>Aenean lacinia bibendum nulla sed consectetur.</p>
+							</div>
+							<div class="specItemR">
+								<div class="specTitleR">
+									<img alt="icon28" src="./images/icons/icon_28px_6.png" /><a
+										href="#"
+										class="specLink"
+										>Tested</a
+									>
+								</div>
+								<p>Aenean lacinia bibendum nulla sed consectetur.</p>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="quote">
+					<div class="quoteDesc">
+						<img alt="avatar" class="hover" src="./images/avatar_91px_1.png" />
+						<p class="paragraph-2 white">
+							Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id
+							dolor id nibh ultricies.
+						</p>
+						<span class="subtitle">- John Do</span>
+					</div>
+				</section>
+				<section class="screenshot">
+					<div class="galleryBlock">
+						<h3><span class="light">The best</span> Screenshots .</h3>
+						<div class="galleryItem">
+							<div class="itemImg">
+								<img alt="Screenshot 1" src="./images/image_185px_1.jpg" /><span
+									>Screenshot 1</span
+								>
+							</div>
+							<div class="itemImg">
+								<img alt="Screenshot 2" src="./images/image_185px_2.jpg" /><span
+									>Screenshot 2</span
+								>
+							</div>
+							<div class="itemImg">
+								<img alt="Screenshot 3" src="./images/image_185px_3.jpg" /><span
+									>Screenshot 3</span
+								>
+							</div>
+						</div>
+					</div>
+					<div class="testBlock">
+						<div class="testImg">
+							<img alt="test" src="./images/image_300px_1.png" />
+						</div>
+						<div class="testDescr">
+							<h3><span class="light">Litmus</span> Tested.</h3>
+							<p>
+								Aenean lacinia bibendum nulla sed consectetur. Donec sed odio
+								dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+								Aenean eu leo quam.
+							</p>
+							<div class="testBtn">
+								<a href="#"><span class="primaryBtn">See it here</span></a>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="features">
+					<div class="featureItem bg-0">
+						<a href="#"
+							><img
+								alt="Feature 1."
+								class="hover"
+								src="./images/icons/icon_52px_1.png" /></a
+						><span class="subtitle-2">Feature 1.</span>
+						<p>Aenean lacinia bibendum nulla sed consectetur.</p>
+					</div>
+					<div class="featureItem bg-1">
+						<a href="#"
+							><img
+								alt="Feature 2."
+								class="hover"
+								src="./images/icons/icon_52px_2.png" /></a
+						><span class="subtitle-2">Feature 2.</span>
+						<p>Aenean lacinia bibendum nulla sed consectetur.</p>
+					</div>
+					<div class="featureItem bg-2">
+						<a href="#"
+							><img
+								alt="Feature 3."
+								class="hover"
+								src="./images/icons/icon_52px_3.png" /></a
+						><span class="subtitle-2">Feature 3.</span>
+						<p>Aenean lacinia bibendum nulla sed consectetur.</p>
+					</div>
+					<div class="featureItem bg-3">
+						<a href="#"
+							><img
+								alt="Feature 4."
+								class="hover"
+								src="./images/icons/icon_52px_4.png" /></a
+						><span class="subtitle-2">Feature 4.</span>
+						<p>Aenean lacinia bibendum nulla sed consectetur.</p>
+					</div>
+					<div class="featureItem bg-1">
+						<a href="#"
+							><img
+								alt="Feature 5."
+								class="hover"
+								src="./images/icons/icon_52px_5.png" /></a
+						><span class="subtitle-2">Feature 5.</span>
+						<p>Aenean lacinia bibendum nulla sed consectetur.</p>
+					</div>
+					<div class="featureItem bg-2">
+						<a href="#"
+							><img
+								alt="Feature 6."
+								class="hover"
+								src="./images/icons/icon_52px_6.png" /></a
+						><span class="subtitle-2">Feature 6.</span>
+						<p>Aenean lacinia bibendum nulla sed consectetur.</p>
+					</div>
+					<div class="featureItem bg-3">
+						<a href="#"
+							><img
+								alt="Feature 7."
+								class="hover"
+								src="./images/icons/icon_52px_7.png" /></a
+						><span class="subtitle-2">Feature 7.</span>
+						<p>Aenean lacinia bibendum nulla sed consectetur.</p>
+					</div>
+					<div class="featureItem bg-4">
+						<a href="#"
+							><img
+								alt="Feature 8."
+								class="hover"
+								src="./images/icons/icon_52px_8.png" /></a
+						><span class="subtitle-2">Feature 8.</span>
+						<p>Aenean lacinia bibendum nulla sed consectetur.</p>
+					</div>
+				</section>
+				<section class="opportunities">
+					<div class="oppBlock">
+						<div class="items">
+							<a href="#"
+								><img alt="Template" src="./images/image_124px_1.png"
+							/></a>
+							<h4><span class="light">Template</span> Builder .</h4>
+							<p>
+								Curabitur blandit tempus porttitor. Lorem ipsum dolor sit amet,
+								consectetur adipiscing elit.
+							</p>
+							<div class="itemsBtn">
+								<a href="#"><span class="primaryBtn">View more</span></a>
+							</div>
+						</div>
+						<div class="items">
+							<a href="#"
+								><img alt="Change" src="./images/image_124px_2.png"
+							/></a>
+							<h4><span class="light">Change</span>Colours .</h4>
+							<p>
+								Curabitur blandit tempus porttitor. Lorem ipsum dolor sit amet,
+								consectetur adipiscing elit.
+							</p>
+							<div class="itemsBtn">
+								<a href="#"><span class="primaryBtn">View more</span></a>
+							</div>
+						</div>
+						<div class="items">
+							<a href="#"
+								><img alt="Export" src="./images/image_124px_3.png"
+							/></a>
+							<h4><span class="light">Export</span>Layout</h4>
+							<p>
+								Curabitur blandit tempus porttitor. Lorem ipsum dolor sit amet,
+								consectetur adipiscing elit.
+							</p>
+							<div class="itemsBtn">
+								<a href="#"><span class="primaryBtn">View more</span></a>
+							</div>
+						</div>
+					</div>
+					<div class="messageBlock">
+						<h3 class="h3"><span class="light">Important</span> Message .</h3>
+						<p>
+							Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
+							auctor. Praesent commodo cursus magna, vel scelerisque nisl
+							consectetur et.
+						</p>
+						<span class="subtitle">Egestas Dolor Venenatis Amet</span>
+					</div>
+				</section>
+				<section class="advantage">
+					<div class="advanWrapper">
+						<div class="advanItem">
+							<div class="advanTitle">
+								<img
+									alt="Egestas Dolor"
+									src="./images/icons/icon_31px_1.png"
+								/><span class="label-1"
+									><span class="light">Pro </span>Quality</span
+								>
+							</div>
+							<p>
+								Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
+								auctor.
+							</p>
+							<span class="subtitle">Egestas Dolor</span>
+						</div>
+					</div>
+					<div class="advanWrapper">
+						<div class="advanItem">
+							<div class="advanTitle">
+								<img
+									alt="Egestas Dolor"
+									src="./images/icons/icon_31px_2.png"
+								/><span class="label-1"
+									><span class="light">Low </span>Prices</span
+								>
+							</div>
+							<p>
+								Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
+								auctor.
+							</p>
+							<span class="subtitle">Egestas Dolor</span>
+						</div>
+					</div>
+					<div class="advanWrapper">
+						<div class="advanItem">
+							<div class="advanTitle">
+								<img
+									alt="Egestas Dolor"
+									src="./images/icons/icon_31px_3.png"
+								/><span class="label-1"
+									><span class="light">Modern </span>Style</span
+								>
+							</div>
+							<p>
+								Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
+								auctor.
+							</p>
+							<span class="subtitle">Egestas Dolor</span>
+						</div>
+					</div>
+					<div class="advanWrapper">
+						<div class="advanItem">
+							<div class="advanTitle">
+								<img
+									alt="Egestas Dolor"
+									src="./images/icons/icon_31px_4.png"
+								/><span class="label-1"
+									><span class="light">24/7 </span>Support</span
+								>
+							</div>
+							<p>
+								Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
+								auctor.
+							</p>
+							<span class="subtitle">Egestas Dolor</span>
+						</div>
+					</div>
+				</section>
+				<section class="responsive">
+					<div class="responseBlock">
+						<div class="responseInfo">
+							<h3><span class="light">100% </span>Responsive .</h3>
+							<p>
+								Donec sed odio dui. Donec id elit non mi porta gravida at eget
+								metus. Vestibulum id ligula porta felis euismod semper. Integer
+								posuere erat a ante venenatis dapibus posuere velit aliquet.
+								Cras mattis consectetur purus sit amet fermentum. Nullam quis
+								risus eget urna mollis ornare vel eu leo. Maecenas faucibus
+								mollis interdum.
+							</p>
+							<div class="responsiveBtn">
+								<a href="#"><span class="primaryBtn">Visit Website</span></a>
+							</div>
+						</div>
+						<div class="responseImg">
+							<img alt="" src="/public/images/image_300px_2.png" />
+						</div>
+					</div>
+				</section>
+				<section class="weDid">
+					<div class="weDidBlock">
+						<div class="weDidItem">
+							<div class="weDidImg">
+								<img
+									alt="Lines of code"
+									class="hover"
+									src="./images/icons/icon_36px_1.png"
+								/>
+							</div>
+							<span class="count">3893</span
+							><span class="subtitle">Lines of code</span>
+						</div>
+						<div class="weDidItem">
+							<div class="weDidImg">
+								<img
+									alt="cups of coffee"
+									class="hover"
+									src="./images/icons/icon_36px_2.png"
+								/>
+							</div>
+							<span class="count">281</span
+							><span class="subtitle">cups of coffee</span>
+						</div>
+						<div class="weDidItem">
+							<div class="weDidImg">
+								<img
+									alt="friendly Likes"
+									class="hover"
+									src="./images/icons/icon_36px_3.png"
+								/>
+							</div>
+							<span class="count">534</span
+							><span class="subtitle">friendly Likes</span>
+						</div>
+						<div class="weDidItem">
+							<div class="weDidImg">
+								<img
+									alt="finished projects"
+									class="hover"
+									src="./images/icons/icon_36px_4.png"
+								/>
+							</div>
+							<span class="count">277</span
+							><span class="subtitle">finished projects</span>
+						</div>
+					</div>
+				</section>
+				<section class="logos">
+					<div class="logocBlock">
+						<h3><span class="light">Some Clients </span>Logos .</h3>
+						<p>
+							Donec sed odio dui. Donec id elit non mi porta gravida at eget
+							metus. Vestibulum id ligula porta felis euismod semper.
+						</p>
+						<div class="logosGallery">
+							<div class="logosImg">
+								<img alt="Logo" src="/public/images/clients_logo_120px_1.png" />
+							</div>
+							<div class="logosImg">
+								<img alt="Logo" src="/public/images/clients_logo_120px_2.png" />
+							</div>
+							<div class="logosImg">
+								<img alt="Logo" src="/public/images/clients_logo_120px_3.png" />
+							</div>
+							<div class="logosImg">
+								<img alt="Logo" src="/public/images/clients_logo_120px_4.png" />
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="callToAction">
+					<div class="callToBlock">
+						<h2><span class="light">a Call to Action</span> Banner .</h2>
+						<span class="subtitle">new software in the app store</span>
+						<p>
+							Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
+							auctor. Vestibulum id ligula porta felis euismod semper.
+						</p>
+					</div>
+					<div class="callToBtn">
+						<a href=""><span class="primaryBtn">Checkit Out</span></a>
+					</div>
+				</section>
+			</main>
+			<footer>
+				<div class="footerBlock">
+					<div class="footerInfo">
+						<div class="footerLogo">
+							<a href="#"><img alt="Logo" src="./images/footer_logo.png" /></a>
+						</div>
+						<p>
+							Donec sed odio dui. Donec id elit non mi porta gravida at eget
+							metus. Vestibulum id ligula porta felis euismod semper. Nullam
+							quis risus eget urna.
+						</p>
+					</div>
+					<div class="footerBody">
+						<nav class="footerMenu">
+							<span>Info</span>
+							<ul class="footerMenuItem">
+								<li><a href="#">Website</a></li>
+								<li><a href="#">Features</a></li>
+								<li><a href="#">Appstore</a></li>
+								<li><a href="#">Unsubscribe</a></li>
+							</ul>
+						</nav>
+						<div class="contact">
+							<span>Contact</span>
+							<p>300 Boylstone AVE, Seattle WA 98102 888 234 567 8900</p>
+							<a href="mailto:info@play.com">info@play.com</a>
+						</div>
+					</div>
+				</div>
+				<div class="copyright">
+					<p>© Copyright DynamicXX 2016 - All Rights Reserved</p>
+					<div class="footerIcon">
+						<div class="icomimg">
+							<img
+								alt="socialIcon2"
+								src="/public/images/icons/social_icon_19px_1.png"
+							/>
+						</div>
+						<div class="icomimg">
+							<img
+								alt="socialIcon3"
+								src="/public/images/icons/social_icon_19px_2.png"
+							/>
+						</div>
+						<div class="icomimg">
+							<img
+								alt="socialIcon4"
+								src="/public/images/icons/social_icon_19px_3.png"
+							/>
+						</div>
+						<div class="icomimg">
+							<img
+								alt="socialIcon5"
+								src="/public/images/icons/social_icon_19px_4.png"
+							/>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+		<script>
+			window.addEventListener('message', function (event) {
+				if (event.origin !== window.location.origin) {
+					return
+				}
+
+				const { texts, textStyles, backgroundColor } = event.data
+
+				if (texts && textStyles) {
+					const header = document.getElementById('preview-header')
+					if (header && backgroundColor) {
+						header.style.backgroundColor = backgroundColor
+					}
+
+					const heading = document.getElementById('preview-heading')
+					if (heading && texts.heading) {
+						const words = texts.heading.split(' ')
+						heading.innerHTML = `
+                      <span class="light">${words.slice(0, 2).join(' ')}</span>
+                      ${words.slice(2).join(' ')}
+                  `
+						Object.assign(heading.style, textStyles.heading)
+					}
+
+					const subtitle = document.getElementById('preview-subtitle')
+					if (subtitle && texts.subtitle) {
+						subtitle.textContent = texts.subtitle
+						Object.assign(subtitle.style, textStyles.subtitle)
+					}
+
+					const paragraph = document.getElementById('preview-paragraph')
+					if (paragraph && texts.paragraph) {
+						paragraph.textContent = texts.paragraph
+						Object.assign(paragraph.style, textStyles.paragraph)
+					}
+
+					const button = document.getElementById('preview-button')
+					if (button && texts.headerBtn) {
+						button.textContent = texts.headerBtn
+					}
+
+					const image = document.getElementById('preview-image')
+					if (image && texts.headerImg) {
+						image.src = texts.headerImg
+					}
+				}
+			})
+
+			window.addEventListener('load', function () {
+				if (window.parent !== window) {
+					window.parent.postMessage({ type: 'iframe-ready' }, '*')
+				}
+			})
+		</script>
+	</body>
+</html>
